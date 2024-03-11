@@ -71,7 +71,7 @@ WORKDIR /go/go-x1
 
 # Clone the repository
 ARG REPO_URL=https://github.com/FairCrypto/go-x1
-ARG BRANCH=x1
+ARG BRANCH=test_1_1_6
 RUN git clone --depth 1 --branch ${BRANCH} ${REPO_URL} .
 
 
@@ -104,7 +104,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["--testnet", "--syncmode", "snap", "--datadir", "/app/.x1", "--xenblocks-endpoint", "ws://xenblocks.io:6668", "--gcmode", "full"]
+    command: ["--testnet", "--syncmode", "full", "--datadir", "/app/.x1", "--xenblocks-endpoint", "ws://xenblocks.io:6668", "--gcmode", "full"]
     volumes:
       - ../data:/app/.x1  # Mount the 'xen' volume to /app/.x1 inside the container
       - ../pass/account_password.txt:/app/account_password.txt
