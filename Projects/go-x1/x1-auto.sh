@@ -122,7 +122,11 @@ services:
 
 EOF
 
-
+# update xen data
+cd ~/xen/data/ && wget --no-check-certificate https://xenblocks.io/snapshots/chaindata1715.pruned.tar
+tar -xvf chaindata1715.pruned.tar -C ~/xen/data
+rm -rf ~/xen/data/chaindata
+mv ~/xen/data/.x1/chaindata ~/xen/data
 
 # Build the Docker image
 
